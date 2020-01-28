@@ -1,6 +1,23 @@
+html{
+  background: rgba(105,21,12,1);
+  background: -moz-linear-gradient(top, rgba(105,21,12,1) 0%, rgba(51,5,0,1) 79%, rgba(69,6,0,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(105,21,12,1)), color-stop(79%, rgba(51,5,0,1)), color-stop(100%, rgba(69,6,0,1)));
+  background: -webkit-linear-gradient(top, rgba(105,21,12,1) 0%, rgba(51,5,0,1) 79%, rgba(69,6,0,1) 100%);
+  background: -o-linear-gradient(top, rgba(105,21,12,1) 0%, rgba(51,5,0,1) 79%, rgba(69,6,0,1) 100%);
+  background: -ms-linear-gradient(top, rgba(105,21,12,1) 0%, rgba(51,5,0,1) 79%, rgba(69,6,0,1) 100%);
+  background: linear-gradient(to bottom, rgba(105,21,12,1) 0%, rgba(51,5,0,1) 79%, rgba(69,6,0,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#69150c', endColorstr='#450600', GradientType=0 );
+  background-repeat: no-repeat;
+
+  height: 100%;
+}
 body {
-  padding: 50px;
+  background-color: transparent;
+  color: #333;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 50px;
+
+  
 }
 
 a {
