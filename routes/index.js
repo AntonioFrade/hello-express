@@ -7,7 +7,7 @@ var router = express.Router();
 // req -> request -> Objeto que contiene información acerca de la petición realizada por el usuario.
 // res -> response -> Respuesta que se le dará al usuario cuando haga esta petición.
 router.get('/', function(req, res, next) {
-
+  
   const products = [ 
     { name:"Microondas", price:45, existencias:6 },
     { name:"Frigorífico", price:200, existencias:4 },
