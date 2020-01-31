@@ -2,16 +2,31 @@
 <html>
   <head>
     <title><%= product.name %></title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <div class="row">
-      <div class="col-6"><img src="/images/<%= product.image %>" alt=""></div>
-      <div class="col-6">
+      <div class="col-12 productBreadcrumb">
+        <ul class="a-horizontal a-size-small">
+            <li><a class="a-link-normal a-color-tertiary" href="/">Index</a></li>
+            <li class="a-breadcrumb-divider">›</li>
+            <li><a class="a-link-normal a-color-tertiary" href="#">Products</a></li>
+            <li class="a-breadcrumb-divider">›</li>
+            <li><a class="a-link-normal a-color-tertiary" href="#"><%= product.name %></a></li>
+        </ul>
+      </div>
+      <div class="col-6 productPhoto"><img src="/images/<%= product.image %>" alt=""></div>
+      <div class="col-6 productDesc">
         <h2><%= product.name %></h2>
         <h3><%= product.price %>€</h3>
-        <p><a href="/products/<%= product.ref %>">COMPRAR</a></p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae sequi eligendi tempora a earum reprehenderit ut ab optio nobis vel rem hic quasi voluptas veniam, aperiam quaerat placeat quibusdam quis.</p>
+        <form action="/comprar" method="POST">
+          <input type="hidden" name="ref" value="<%= product.ref %>">
+          <input class="btn btn-primary" type="submit" value="COMPRAR">
+        </form>
+        <!-- <a class="btn btn-primary" href="/products/<%= product.ref %>">COMPRAR</a> -->
       </div>
     </div>
     

@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session')
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
@@ -17,6 +18,14 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+// Configuramos el middleware cookieSession
+app.use(cookieSession({
+  name: 'campurriana',
+  keys: ['90834yub3497349h13498y0uohn','34109519hrt8fucnc9848hfnier'],
+
+  // Cookie Options
+  maxAge: 5 * 60 * 1000 // 5 min
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
