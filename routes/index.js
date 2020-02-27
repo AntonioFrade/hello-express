@@ -3,7 +3,8 @@ var express = require('express');
 // Es el objeto encargado de hacer el management de todas las rutas de la app.
 var router = express.Router();
 // cargamos los productos que exportamos desde el fichero products.js de MODELS.
-var products = require( '../models/products' );
+// var products = require( '../models/products' );
+const { Producto } = require('../models');
 // Importamos el modelo de datos de los usuarios.
 var users = require( '../models/users' );
 
@@ -13,24 +14,41 @@ var users = require( '../models/users' );
 router.get('/', function(req, res, next) {
   // Recuperamos el username de la sesion.
   const username = req.session.username;
-  // index es el nombre de una plantilla y title es un nombre de variable en la plantilla.
-  res.render('index', { title: 'PEpoe', username, products });
+  Producto.findAll().then( resultado => {
+    // index es el nombre de una plantilla y title es un nombre de variable en la plantilla.
+    res.render('index', { title: 'PEpoe', username, products:resultado });
+  })
+  
+  
 });
+
+/*
+* Página con los detalles de un producto según su referencia.
+*/
 
 router.get('/products/:ref', function(req, res, next) {
 
   // Cojo la referencia del request.
   var ref = req.params.ref;
-  // Busco entre los productos del array el que coincide con la referencia.
-  const product = products.find( function( p ){ return p.ref == ref } );
 
-  if( product ){
-    // Después de encontrar el producto se lo pasamos a la plantilla.
-    res.render('product', { product });
-  }else{
-    // Si no encontramos el producto con la referencia especificada redirigimos a la página de error.
-    res.redirect("/error");
-  }
+  // Uso el método de Sequelize FindOne para que me devuelva el producto
+  // con la referencia indicada.
+  Producto.findOne({
+    where:{ ref }
+  }).then( product =>{
+    if( product ){
+      // Después de encontrar el producto se lo pasamos a la plantilla.
+      res.render('product', { product });
+    }else{
+      // Si no encontramos el producto con la referencia especificada redirigimos a la página de error.
+      res.redirect("/error");
+    }
+  })
+
+  // Busco entre los productos del array el que coincide con la referencia.
+  // const product = products.find( function( p ){ return p.ref == ref } );
+
+
 
 });
 

@@ -17,10 +17,10 @@
             <li><a class="a-link-normal a-color-tertiary" href="#"><%= product.name %></a></li>
         </ul>
       </div>
-      <div class="col-6 productPhoto"><img src="/images/<%= product.image %>" alt=""></div>
+      <div class="col-6 productPhoto"><img src="/images/<%= product.imagen %>" alt=""></div>
       <div class="col-6 productDesc">
-        <h2><%= product.name %></h2>
-        <h3><%= product.price %>€</h3>
+        <h2><%= product.nombre %></h2>
+        <h3><%= product.precio %>€</h3>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae sequi eligendi tempora a earum reprehenderit ut ab optio nobis vel rem hic quasi voluptas veniam, aperiam quaerat placeat quibusdam quis.</p>
         <form action="/comprar" method="POST">
           <input type="hidden" name="ref" value="<%= product.ref %>">

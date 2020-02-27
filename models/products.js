@@ -1,8 +1,16 @@
-module.exports = [ 
-    { name:"Microondas", price:45, existencias:6, image:"microondas.jpg", ref:"1001" },
-    { name:"Frigorífico", price:200, existencias:4, image:"frigorifico.jpg", ref:"1002" },
-    { name:"Lámpara", price:25, existencias:14, image:"lampara.jpg", ref:"1003" },
-    { name:"TV", price:50, existencias:8, image:"televisor.jpg", ref:"1004"  },
-    { name:"Lavadora", price:290, existencias:3, image:"lavadora.jpg", ref:"1005" },
-    { name:"Secadora", price:180, existencias:5, image:"secadora.jpg", ref:"1006" }
-  ];
+const Sequelize = require('sequelize');
+const sequelize = require('./db');
+
+// Definimos el modelo para la tabla producto
+const Producto = sequelize.define('producto', {
+  nombre: Sequelize.STRING,
+  ref: Sequelize.INTEGER,
+  imagen: Sequelize.STRING,
+  precio: Sequelize.DECIMAL(10,2),
+  existencias: Sequelize.INTEGER,
+  descripcion: Sequelize.STRING
+}, {
+  // options
+});
+
+module.exports = Producto;
